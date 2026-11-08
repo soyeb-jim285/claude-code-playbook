@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Personal Claude Code files
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/agent-memory-local/
+.claude/worktrees/
+
+# Playwright MCP output
+.playwright-mcp/

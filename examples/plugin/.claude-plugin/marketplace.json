@@ -1,0 +1,11 @@
+{
+  "name": "playbook-marketplace",
+  "owner": { "name": "Claude Code Playbook" },
+  "plugins": [
+    {
+      "name": "notes-toolkit",
+      "source": "./notes-toolkit",
+      "description": "Example plugin that bundles a skill and a subagent"
+    }
+  ]
+}

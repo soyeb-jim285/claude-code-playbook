@@ -1,0 +1,4 @@
+# Personal notes for this project (copy to CLAUDE.local.md, which git ignores)
+
+- My dev server runs on port 4000, so use http://localhost:4000 in browser checks.
+- Keep explanations short. I know Node well.
