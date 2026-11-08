@@ -19,6 +19,10 @@ function sendJson(res, status, body) {
 }
 
 async function readJson(req) {
+  // A JSON content type forces a CORS preflight, which stops other sites from posting here.
+  if (!req.headers['content-type']?.startsWith('application/json')) {
+    throw new HttpError(415, 'content-type must be application/json');
+  }
   let raw = '';
   for await (const chunk of req) {
     raw += chunk;
@@ -48,8 +52,9 @@ export function createApp() {
     const noteMatch = url.pathname.match(/^\/api\/notes\/(\d+)$/);
 
     if (req.method === 'GET' && url.pathname === '/') {
+      const html = await readFile(INDEX_HTML);
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
-      return res.end(await readFile(INDEX_HTML));
+      return res.end(html);
     }
 
     if (req.method === 'GET' && url.pathname === '/api/notes') {
@@ -85,5 +90,5 @@ export function createApp() {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const port = Number(process.env.PORT ?? 3000);
-  createApp().listen(port, () => console.log(`Notes app on http://localhost:${port}`));
+  createApp().listen(port, '127.0.0.1', () => console.log(`Notes app on http://localhost:${port}`));
 }

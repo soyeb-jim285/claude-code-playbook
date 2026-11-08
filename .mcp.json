@@ -2,7 +2,14 @@
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@playwright/mcp@0.0.84", "--headless", "--isolated"]
+      "args": [
+        "-y",
+        "@playwright/mcp@0.0.84",
+        "--headless",
+        "--isolated",
+        "--allowed-origins",
+        "http://localhost:3000;http://127.0.0.1:3000"
+      ]
     }
   }
 }

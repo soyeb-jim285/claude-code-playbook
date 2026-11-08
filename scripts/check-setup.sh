@@ -51,6 +51,9 @@ check "audit-app.js parses" node -e '
   new (async function () {}).constructor(src);
 '
 
+echo "Examples"
+check "mcp-server/server.js parses" node --check examples/mcp-server/server.js
+
 echo "Claude Code"
 if command -v claude >/dev/null; then
   check "skills and agents validate" claude plugin validate .claude

@@ -33,7 +33,14 @@ npx playwright install chromium
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@playwright/mcp@0.0.84", "--headless", "--isolated"]
+      "args": [
+        "-y",
+        "@playwright/mcp@0.0.84",
+        "--headless",
+        "--isolated",
+        "--allowed-origins",
+        "http://localhost:3000;http://127.0.0.1:3000"
+      ]
     }
   }
 }
@@ -42,6 +49,8 @@ npx playwright install chromium
 Never commit tokens. Use `${API_TOKEN}` instead.
 
 Remove `--headless` to watch the browser.
+
+`--allowed-origins` keeps the browser on your app. Change it if you use another port. It reduces mistakes but is not a security boundary, and redirects can get past it.
 
 ## Use
 
@@ -61,5 +70,9 @@ claude
 ```
 
 Run browser work in a subagent to save context. Web pages can contain hostile instructions, so test sites you control.
+
+## Build your own
+
+See [Part 4 of the tour](12-guided-tour.md#part-4-tools-and-mcp). Sample code: [examples/mcp-server](../examples/mcp-server/server.js).
 
 Next: [Workflows](10-workflows.md)

@@ -35,7 +35,7 @@ Then do the [guided tour](docs/12-guided-tour.md).
 | 09 | [MCP and Playwright](docs/09-mcp-and-playwright.md) | Control a browser |
 | 10 | [Workflows](docs/10-workflows.md) | Run many agents with code |
 | 11 | [Automation](docs/11-automation.md) | Scripts, CI, worktrees |
-| 12 | [Guided tour](docs/12-guided-tour.md) | Try everything |
+| 12 | [Guided tour](docs/12-guided-tour.md) | Try everything, build your own skill, agent, and tool |
 
 ## Files
 
@@ -63,6 +63,7 @@ claude-code-playbook/
 ├── examples/
 │   ├── memory/                Sample memory files
 │   ├── plugin/                Sample plugin
+│   ├── mcp-server/            Build your own tools
 │   └── agent-sdk/             Standalone agent
 ├── scripts/check-setup.sh     Validates the setup
 ├── src/server.js              API

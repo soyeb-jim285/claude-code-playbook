@@ -35,8 +35,21 @@ test('rejects notes over the length limit', async () => {
 });
 
 test('rejects invalid JSON', async () => {
-  const res = await fetch(`${base}/api/notes`, { method: 'POST', body: '{nope' });
+  const res = await fetch(`${base}/api/notes`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: '{nope',
+  });
   assert.equal(res.status, 400);
+});
+
+test('rejects bodies that are not declared as JSON', async () => {
+  const res = await fetch(`${base}/api/notes`, {
+    method: 'POST',
+    headers: { 'content-type': 'text/plain' },
+    body: JSON.stringify({ text: 'cross-site note' }),
+  });
+  assert.equal(res.status, 415);
 });
 
 test('finds notes by exact substring', async () => {

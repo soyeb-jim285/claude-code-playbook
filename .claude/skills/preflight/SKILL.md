@@ -2,7 +2,7 @@
 name: preflight
 description: Reports whether the working tree is ready to commit.
 disable-model-invocation: true
-allowed-tools: Bash(git diff *) Read
+allowed-tools: Bash(git status --short) Bash(git diff --stat) Bash(npm test) Read
 ---
 
 ## Current state

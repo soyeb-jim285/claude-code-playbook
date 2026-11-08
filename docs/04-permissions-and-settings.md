@@ -15,7 +15,7 @@ Order: **deny, ask, allow**. Deny always wins.
 ```json
 {
   "permissions": {
-    "allow": ["Bash(npm test)", "Bash(git diff *)"],
+    "allow": ["Bash(npm test)", "Bash(git diff --stat)"],
     "ask": ["Bash(git push *)"],
     "deny": ["Read(./.env)"]
   }
@@ -25,10 +25,12 @@ Order: **deny, ask, allow**. Deny always wins.
 | Rule | Matches |
 |---|---|
 | `Bash(npm test)` | That exact command |
-| `Bash(git diff *)` | `git diff` with any arguments |
+| `Bash(npm run *)` | `npm run` with any arguments |
 | `Read(./.env)` | That file |
 | `Edit(/docs/**)` | Everything in `docs/` |
 | `mcp__playwright__browser_click` | One MCP tool |
+
+> **Careful with `*`:** `Bash(node --test *)` can run any code. `Bash(git diff *)` can read any file with `--no-index`. Allow exact commands instead.
 
 ## Modes
 

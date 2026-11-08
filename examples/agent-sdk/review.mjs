@@ -10,7 +10,8 @@ const conversation = query({
   prompt: `Review ${target} and list its three most serious problems with file:line.`,
   options: {
     cwd: repoRoot,
-    settingSources: ['project'], // load this repo's CLAUDE.md and .claude/ config
+    settingSources: [], // ignore repo and user config, so its allow rules cannot widen access
+    tools: ['Read', 'Grep', 'Glob'], // the only built-in tools this agent has
     allowedTools: ['Read', 'Grep', 'Glob'],
     permissionMode: 'dontAsk', // anything not in allowedTools is denied without a prompt
     maxTurns: 10,
